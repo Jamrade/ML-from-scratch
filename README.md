@@ -20,22 +20,22 @@ perfect my own private networks.
 6. Adjust your hyperparameters between runs (found in the ADAM Optimizer class Alpha1: Learning rate, Beta1: beta1, Beta2: beta2, decay: starting decay rate for momentum)
 7. Repeat until high accuracy is achieved, then save the weights and biases using pickling.
 
-## Instructions on use:
-grab historical pricing for a stock ensuring the high and low columns are present
-run the DataSlidingRule.py file
-put the name of your csv in the parameters to the read_csv function (ex. dataset.read_csv(“{your dataset name}.csv”))
-in the DataSlidingRule.py file call the average() function with name of desired column to have its’ average added to the new dataset
-when all desired columns are added run the direction() function to generated the ytrue values in one hot vector format
-then run the normalize() function to normalize your data points
-then run the output() function to save your ytrue and normalized datasets as y.csv and X.csv respectively
-go to neural network.py and create a new layer dense instance name “dense1” of the same shape as your dataset’s second dimension (ex. inputs = [1840, 4], layerDense(4, 20))
-make as many hidden layers as you would like matching the shape of the second dimension with the first of the subsequent layer (ex. dense1 = [4, 20] dense2 = [20, 69])
-instantiate the first activation fucntion, the loss function, the accuracy class, and the optimizer
-Note: the following should all be done within a for loop that has the number of desired epochs as its range
-run the forward pass of each layer of the network, layer one uses the normalized dataset as its input every subsequent layer uses the previous layer’s activation function output (ex. dense1.forward(X), activation1.forward(dense1.output), dense2.forward(activation1.output)
-for the final dense layer run the forward pass then run the loss function (ex. dense2.forward(activation1.output), lossActivationFunction.forward(dense2.output))
-run the backward passes in the reverse order of the forward, starting with the loss and moving back to the backward pass of the first dense layer
-run the optimizer preParamUpdate() function
-run the optimizer paramUpdate() function
-run the optimizer postParamUpdate() function
+## Detailed Instructions on use:
+1. grab historical pricing for a stock ensuring the high and low columns are present
+2. run the DataSlidingRule.py file
+3. put the name of your csv in the parameters to the read_csv function (ex. dataset.read_csv(“{your dataset name}.csv”))
+4. in the DataSlidingRule.py file call the average() function with name of desired column to have its’ average added to the new dataset
+5. when all desired columns are added run the direction() function to generated the ytrue values in one hot vector format
+6. then run the normalize() function to normalize your data points
+7. then run the output() function to save your ytrue and normalized datasets as y.csv and X.csv respectively
+8. go to neural network.py and create a new layer dense instance name “dense1” of the same shape as your dataset’s second dimension (ex. inputs = [1840, 4], layerDense(4, 20))
+9. make as many hidden layers as you would like matching the shape of the second dimension with the first of the subsequent layer (ex. dense1 = [4, 20] dense2 = [20, 69])
+10. instantiate the first activation fucntion, the loss function, the accuracy class, and the optimizer
+11. Note: the following should all be done within a for loop that has the number of desired epochs as its range
+12. run the forward pass of each layer of the network, layer one uses the normalized dataset as its input every subsequent layer uses the previous layer’s activation function output (ex. dense1.forward(X), activation1.forward(dense1.output), dense2.forward(activation1.output)
+13. for the final dense layer run the forward pass then run the loss function (ex. dense2.forward(activation1.output), lossActivationFunction.forward(dense2.output))
+14. run the backward passes in the reverse order of the forward, starting with the loss and moving back to the backward pass of the first dense layer
+15. run the optimizer preParamUpdate() function
+16. run the optimizer paramUpdate() function
+17. run the optimizer postParamUpdate() function
 
